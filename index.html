@@ -10,13 +10,27 @@
         <title>Simon Says</title>
     </head>
     <body>
-        <div class="gameboard">
-            <div id="celeste" class="color celeste left" data-color="0"></div>
-            <div id="violeta" class="color violeta right" data-color="1"></div>
-            <div id="naranja" class="color naranja left" data-color="2"></div>
-            <div id="verde" class="color verde right" data-color="3"></div>
-            <button id="btnEmpezar" class="btn-start" onclick="startGame()">Empezar a jugar!</button>
+        <header class="header flex">
+            <h2 id="level-bar"><span id="level-indicator"></span> </h2>
+        </header>
+        <div class="game">
+            <div class="stats">
+                <h1 class="header__title">
+                    Simon Says
+                </h1>
+                <span id="level-number">1</span>
+            </div>
+            <div class="gameboard">
+                <div id="celeste" class="color celeste" data-color="0"></div>
+                <div id="violeta" class="color violeta" data-color="1"></div>
+                <div id="naranja" class="color naranja" data-color="2"></div>
+                <div id="verde" class="color verde" data-color="3"></div>
+            </div>
         </div>
+        <footer class="footer flex">
+            
+            <button id="btnEmpezar" class="btn-start confetti-button" onclick="startGame()">START</button>
+        </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
         <script src="javascript/main.js"></script>
     </body>

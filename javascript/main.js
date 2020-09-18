@@ -6,6 +6,11 @@ const btn_oranje = document.getElementById('naranja')
 const btn_green = document.getElementById('verde')
 const btn_start = document.getElementById('btnEmpezar')
 
+const square = '▄'
+const levelNumber = document.getElementById("level-number");
+const levelIndicator = document.getElementById("level-indicator");
+const levelBar = document.getElementById("level-bar");
+console.log(levelBar);
 const MAX_LEVEL = 10;
 
 class Game {
@@ -27,6 +32,8 @@ class Game {
         this.nextLevel = this.nextLevel.bind(this)
         this.chooseColor = this.chooseColor.bind(this)
         this.level = 1;
+        
+        levelNumber.innerHTML = this.level;
         this.toggleStartButton();
         
     }
@@ -35,6 +42,8 @@ class Game {
         this.subLevel = 0
         this.showSequence();
         this.turnButtonsOn();
+        this.restartLevelIndicator()
+        levelNumber.innerHTML = this.level;
     }
 
     generateSequence() {
@@ -48,18 +57,19 @@ class Game {
 
     showSequence() {
         for (let index = 0; index < this.level; index++) {
+            setTimeout(() => this.updateLevelBar(), index * 1000);
             setTimeout(() => this.showColor(this.sequence[index]), index * 1000);
         }
     }
 
 
     showColor(color) {
-        this.colors[color].classList.add('light');
-        setTimeout(() => this.hideColor(color), 350);
+        this.colors[color].classList.add("pop");
+        setTimeout(() => this.hideColor(color), 400);
     }
 
     hideColor(color){
-        this.colors[color].classList.remove('light');
+        this.colors[color].classList.remove("pop");
     }
 
     chooseColor(event) {
@@ -68,7 +78,7 @@ class Game {
 
         if(clickedColor == this.sequence[this.subLevel]) {
             this.subLevel++;
-
+            this.updateLevelIndicator();
             if(this.subLevel == this.level) {
                 this.turnButtonsOff();
                 this.level++;
@@ -99,6 +109,8 @@ class Game {
         .then(() => {
             this.turnButtonsOff();
             this.initialize();
+            this.restartLevelIndicator();
+            this.restartLevelBar();
         })
     }
 
@@ -116,6 +128,21 @@ class Game {
         }else {
             btnEmpezar.classList.add('hide');
         }
+    }
+
+    updateLevelBar() {
+        levelBar.style.width = `${this.level * 50}px`;
+        
+    }
+    restartLevelBar() {
+        levelBar.style.width = 0;
+    }
+
+    updateLevelIndicator() {
+        levelIndicator.style.width = `${this.subLevel * 50}px`;
+    }
+    restartLevelIndicator() {
+        levelIndicator.style.width = 0;
     }
 }
 
