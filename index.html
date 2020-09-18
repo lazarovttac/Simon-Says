@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Descripción de la página">
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+        <title>Simon Says</title>
+    </head>
+    <body>
+        <div class="gameboard">
+            <div id="celeste" class="color celeste left" data-color="0"></div>
+            <div id="violeta" class="color violeta right" data-color="1"></div>
+            <div id="naranja" class="color naranja left" data-color="2"></div>
+            <div id="verde" class="color verde right" data-color="3"></div>
+            <button id="btnEmpezar" class="btn-start" onclick="startGame()">Empezar a jugar!</button>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script src="javascript/main.js"></script>
+    </body>
+</html>
